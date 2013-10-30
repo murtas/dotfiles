@@ -3,6 +3,7 @@
     name = Diogo F. Andrade Murteira
 [core]
     editor = vim
+	excludesfile = ~/.gitignore_global
 [alias]
     st = status
     ci = commit
