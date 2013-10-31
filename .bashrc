@@ -22,12 +22,25 @@ alias ll="ls -la"
 # VI mode
 set -o vi
 
+# Ruby options
 RUBYOPT=""
 
-# Custom command line tools path
+# Custom command line tools PATH
 heroku="/opt/heroku-client"
 rbenv="$HOME/.rbenv/bin"
-export PATH="$heroku:$rbenv:$PATH"
+BASE_PATH="$heroku:$rbenv:$PATH"
+export PATH=$BASE_PATH
+
+# PHP Composer load project dependencies to PATH
+composer_env () { 
+    dir="`pwd`/vendor/bin";
+    if [[ -d $dir ]]; then
+      export PATH="$dir:$BASE_PATH"; 
+      echo "$dir loaded to PATH.";
+    else
+      echo "No vendor/bin found!";
+    fi
+}
 
 # Enable rbenv shims and autocompletion
 eval "$(rbenv init -)"
