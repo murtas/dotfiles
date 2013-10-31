@@ -17,7 +17,7 @@ fi
 # Put your fun stuff here.
 
 # Alias
-alias ll="ls -la"
+source .bash_aliases
 
 # VI mode
 set -o vi
