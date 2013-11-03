@@ -41,7 +41,7 @@ set clipboard=unnamedplus "alias unnamed register to + register (X11 clipboard)
 
 syntax on           " syntax highlighing
 
-"hi LineNr term=bold ctermfg=DarkGrey " line number color
+hi LineNr term=bold ctermfg=DarkGrey " line number color
 
 "NERDTree legacy arrow
 let g:NERDTreeDirArrows=0
