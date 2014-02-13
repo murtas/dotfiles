@@ -2,8 +2,6 @@
 #
 # This file is sourced by all *interactive* bash shells on startup,
 # including some apparently interactive shells such as scp and rcp
-# that can't tolerate any output.  So make sure this doesn't display
-# anything or bad things will happen !
 
 
 # Test for an interactive shell.  There is no need to set anything
@@ -17,7 +15,7 @@ fi
 # Put your fun stuff here.
 
 # Alias
-source .bash_aliases
+source ~/.bash_aliases
 
 # VI mode
 set -o vi
