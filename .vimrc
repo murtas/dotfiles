@@ -53,6 +53,9 @@ filetype plugin indent on      " enable file type based indentation
 let g:user_emmet_expandabbr_key = '<c-e>'
 let g:use_emmet_complete_tag = 1
 
+" tagbar
+nmap <F8> :TagbarToggle<CR>
+
 " Keymaps
 map <C-n> :NERDTreeToggle<CR>
 map <C-l> :set nonumber!<CR>
