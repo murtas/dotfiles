@@ -59,3 +59,5 @@ nmap <F8> :TagbarToggle<CR>
 " Keymaps
 map <C-n> :NERDTreeToggle<CR>
 map <C-l> :set nonumber!<CR>
+
+autocmd BufWritePre * :retab
