@@ -8,8 +8,8 @@
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
 if [[ $- != *i* ]] ; then
-	# Shell is non-interactive.  Be done now!
-	return
+    # Shell is non-interactive.  Be done now!
+    return
 fi
 
 # Put your fun stuff here.
@@ -29,21 +29,12 @@ rbenv="$HOME/.rbenv/bin"
 BASE_PATH="$heroku:$rbenv:$PATH"
 export PATH=$BASE_PATH
 
-# PHP Composer load project dependencies to PATH
-composer_env () { 
-    dir="`pwd`/vendor/bin";
-    if [[ -d $dir ]]; then
-      export PATH="$dir:$BASE_PATH"; 
-      echo "$dir loaded to PATH.";
-    else
-      echo "No vendor/bin found!";
-    fi
-}
-
 # Enable rbenv shims and autocompletion
 eval "$(rbenv init -)"
 
-# Load in the git branch prompt script.
-source ~/.git-prompt.sh
-
-PS1="[\t] \u@\h\[\033[01;34m\] \w \$(__git_ps1) \$\[\033[00m\] "
+# Git branch in prompt.
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+#"\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+export PS1="[\t] \u@\h \033[01;34m\]\w\033[00m\]\033[32m\]\$(parse_git_branch)\033[00m\] \$ "
