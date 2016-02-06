@@ -37,9 +37,10 @@ set nocindent
 "set sm             " show matching braces, somewhat annoying...
 "set nowrap         " don't wrap lines
 "
-set clipboard=unnamedplus "alias unnamed register to + register (X11 clipboard)
+set clipboard=unnamed
 
 syntax on           " syntax highlighing
+
 
 hi LineNr term=bold ctermfg=DarkGrey " line number color
 
@@ -59,5 +60,7 @@ nmap <F8> :TagbarToggle<CR>
 " Keymaps
 map <C-n> :NERDTreeToggle<CR>
 map <C-l> :set nonumber!<CR>
+
+let g:slime_target = "tmux"
 
 autocmd BufWritePre * :retab
