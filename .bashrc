@@ -37,4 +37,4 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 #"\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
-export PS1="[\t] \u@\h \033[01;34m\]\w\033[00m\]\033[32m\]\$(parse_git_branch)\033[00m\] \$ "
+export PS1="[\t] \u@\h \[\e[01;34m\]\w\[\e[00m\]\[\e[32m\]\$(parse_git_branch)\[\e[00m\] \$ "
