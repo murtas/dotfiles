@@ -13,6 +13,7 @@ if [[ $- != *i* ]] ; then
 fi
 
 # Put your fun stuff here.
+export HISTFILESIZE=50000
 
 # Alias
 source ~/.bash_aliases
