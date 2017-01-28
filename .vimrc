@@ -41,7 +41,6 @@ set clipboard=unnamed
 
 syntax on           " syntax highlighing
 
-
 hi LineNr term=bold ctermfg=DarkGrey " line number color
 
 "NERDTree legacy arrow
@@ -60,7 +59,5 @@ nmap <F8> :TagbarToggle<CR>
 " Keymaps
 map <C-n> :NERDTreeToggle<CR>
 map <C-l> :set nonumber!<CR>
-
-let g:slime_target = "tmux"
 
 autocmd BufWritePre * :retab
