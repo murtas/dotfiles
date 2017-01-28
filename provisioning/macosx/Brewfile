@@ -1,0 +1,26 @@
+cask_args appdir: '/Applications'
+
+tap 'homebrew/bundle'
+tap 'caskroom/cask'
+tap 'homebrew/services'
+
+brew 'vim'
+brew 'git'
+brew 'ruby-build'
+brew 'rbenv'
+
+brew 'tree'
+brew 'htop'
+brew 'jq'
+brew 'nmap'
+brew 'watch'
+brew 'openssl'
+brew 'gpg'
+
+cask 'caffeine'
+cask 'spectacle'
+cask 'google-chrome'
+cask 'gnucash'
+cask 'gpgtools'
+cask 'skitch'
+cask 'slack'
