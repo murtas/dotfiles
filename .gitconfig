@@ -1,6 +1,7 @@
 [user]
     email = murtas@gmail.com
     name = Diogo F. Andrade Murteira
+	signingkey = 40CD8EB3
 [core]
     editor = vim
 	excludesfile = ~/.gitignore_global
