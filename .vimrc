@@ -67,3 +67,5 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 autocmd BufWritePre * :retab
+autocmd FileType gitcommit,markdown setlocal spell
+autocmd FileType gitcommit,markdown setlocal spelllang=en_us
