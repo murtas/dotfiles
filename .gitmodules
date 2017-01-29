@@ -4,6 +4,9 @@
 [submodule ".vim/bundle/delimitMate"]
   path = .vim/bundle/delimitMate
   url = https://github.com/Raimondi/delimitMate
+[submodule ".vim/bundle/vim-rubocop"]
+  path = .vim/bundle/vim-rubocop
+  url = https://github.com/ngmy/vim-rubocop
 [submodule ".vim/bundle/vim-fugitive"]
   path = .vim/bundle/vim-fugitive
   url = https://github.com/tpope/vim-fugitive
