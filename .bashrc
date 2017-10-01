@@ -12,30 +12,19 @@ if [[ $- != *i* ]] ; then
     return
 fi
 
-# Put your fun stuff here.
-export HISTFILESIZE=50000
-
-# Alias
-source ~/.bash_aliases
+source_scripts() {
+  for script in "$@"; do
+    # skip non-executable snippets
+    [ -x "$script" ] || continue
+      # execute $script in the context of the current shell
+      source $script
+  done
+}
 
 # VI mode
 set -o vi
 
-# Ruby options
-RUBYOPT=""
+export HISTFILESIZE=100000
+export HISTCONTROL=ignorespace
 
-# rbenv
-eval "$(rbenv init -)"
-export PATH="~/.rbenv/shims:$PATH"
-
-# Git branch in prompt.
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
-
-#"\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
-export PS1="[\t] \u@\h \[\e[01;34m\]\w\[\e[00m\]\[\e[32m\]\$(parse_git_branch)\[\e[00m\] \$ "
+source_scripts ~/.bashrc.d/{fzf,git,aliases,rbenv,prompt}
