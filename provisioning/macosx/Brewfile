@@ -3,12 +3,15 @@ cask_args appdir: '/Applications'
 tap 'homebrew/bundle'
 tap 'caskroom/cask'
 tap 'homebrew/services'
+tap pivotal/tap
 
 brew 'vim'
 brew 'ack'
 brew 'git'
 brew 'ruby-build'
 brew 'rbenv'
+
+brew 'springboot'
 
 brew 'tree'
 brew 'htop'
