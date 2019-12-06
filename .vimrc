@@ -32,6 +32,9 @@ set whichwrap=b,s,h,l,<,>,[,]   " move freely between files
 set noautoindent
 set nosmartindent
 set nocindent
+set encoding=utf-8
+set fileencoding=utf-8
+
 
 "set autowrite      " auto saves changes when quitting and swiching buffer
 "set sm             " show matching braces, somewhat annoying...
@@ -54,6 +57,7 @@ let g:user_emmet_expandabbr_key = '<c-e>'
 let g:use_emmet_complete_tag = 1
 
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
+let g:CommandTTraverseSCM='pwd'
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
