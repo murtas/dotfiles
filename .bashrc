@@ -24,7 +24,6 @@ source_scripts() {
 # VI mode
 set -o vi
 
-export HISTFILESIZE=100000
-export HISTCONTROL=ignorespace
+export BUNDLE_GITHUB__COM=
 
-source_scripts ~/.bashrc.d/{fzf,git,aliases,rbenv,prompt}
+source_scripts ~/.bashrc.d/{history,locale,fzf,git,aliases,rbenv,prompt,custom_functions,sdkman-init.sh}
