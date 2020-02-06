@@ -1,9 +1,9 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
-tap 'caskroom/cask'
+tap 'cask/cask'
 tap 'homebrew/services'
-tap pivotal/tap
+tap 'pivotal/tap'
 
 brew 'vim'
 brew 'ack'
@@ -34,3 +34,4 @@ cask 'slack'
 cask 'google-backup-and-sync'
 cask 'iterm2'
 cask 'menumeters'
+cask 'spectacle'
