@@ -3,7 +3,7 @@ cask_args appdir: '/Applications'
 tap 'homebrew/bundle'
 tap 'cask/cask'
 tap 'homebrew/services'
-tap 'pivotal/tap'
+tap 'spring-io/tap'
 
 brew 'vim'
 brew 'ack'
@@ -11,7 +11,8 @@ brew 'git'
 brew 'ruby-build'
 brew 'rbenv'
 
-brew 'springboot'
+brew uninstall springboot
+brew install spring-boot
 
 brew 'tree'
 brew 'htop'
@@ -27,11 +28,11 @@ cask 'caffeine'
 cask 'spectacle'
 cask 'google-chrome'
 cask 'gnucash'
-cask 'gpgtools'
-cask 'spectacle'
+cask 'gpg-suite'
 cask 'skitch'
 cask 'slack'
 cask 'google-backup-and-sync'
 cask 'iterm2'
 cask 'menumeters'
-cask 'spectacle'
+cask 'rectangle'
+
