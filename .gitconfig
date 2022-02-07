@@ -1,10 +1,10 @@
 [user]
     email = murtas@gmail.com
     name = Diogo F. Andrade Murteira
-	signingkey = 40CD8EB3
+  signingkey = F6D1F7BF02C625BCFCB895CA111BC3B5C216433F
 [core]
     editor = vim
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [alias]
     st = status
     ci = commit
@@ -16,4 +16,6 @@
     type = cat-file -t
     dump = cat-file -p
 [color]
-	ui = true
+  ui = true
+[commit]
+  gpgsign = true
