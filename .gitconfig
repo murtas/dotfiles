@@ -1,21 +1,30 @@
 [user]
-    email = murtas@gmail.com
-    name = Diogo F. Andrade Murteira
+  email = murtas@gmail.com
+  name = Diogo F. Andrade Murteira
   signingkey = F6D1F7BF02C625BCFCB895CA111BC3B5C216433F
 [core]
-    editor = vim
+  editor = vim
+  pager = delta
   excludesfile = ~/.gitignore_global
 [alias]
-    st = status
-    ci = commit
-    br = branch
-    co = checkout
-    df = diff
-    lg = log -p
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    type = cat-file -t
-    dump = cat-file -p
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
 [color]
   ui = true
 [commit]
   gpgsign = true
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true  # use n and N to move between diff sections
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default

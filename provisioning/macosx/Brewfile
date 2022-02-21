@@ -8,6 +8,7 @@ tap 'spring-io/tap'
 brew 'vim'
 brew 'ack'
 brew 'git'
+brew 'git-delta'
 brew 'ruby-build'
 brew 'rbenv'
 
