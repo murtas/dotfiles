@@ -100,6 +100,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Enable recursive search
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
 # VI mode
 set -o vi
 
@@ -115,4 +119,4 @@ function source_scripts() {
   done
 }
 
-source_scripts ~/.zshrc.d/{secrets,locale,fzf,aliases}
+source_scripts ~/.zshrc.d/{secrets,locale,fzf,aliases,pyenv}
