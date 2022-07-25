@@ -39,3 +39,6 @@
   path = .vim/bundle/command-t
   url = https://github.com/wincent/command-t.git
   branch = master
+[submodule "/Users/murtas/.oh-my-zsh/custom/plugins/zsh-nvm"]
+	path = /Users/murtas/.oh-my-zsh/custom/plugins/zsh-nvm
+	url = git@github.com:lukechilds/zsh-nvm.git
