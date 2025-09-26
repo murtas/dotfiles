@@ -3,7 +3,7 @@
   name = Diogo F. Andrade Murteira
   signingkey = F6D1F7BF02C625BCFCB895CA111BC3B5C216433F
 [core]
-  editor = vim
+  editor = nvim
   pager = delta
   excludesfile = ~/.gitignore_global
 [alias]
@@ -28,3 +28,5 @@
   conflictstyle = diff3
 [diff]
   colorMoved = default
+[pull]
+  rebase = true
