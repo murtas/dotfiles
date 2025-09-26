@@ -1,9 +1,10 @@
 set nocompatible    " use vim defaults
 set ls=2            " allways show status line
 set expandtab       " tabs are converted to spaces, use only when required
-set tabstop=2       " numbers of spaces of tab character
-set shiftwidth=2    " numbers of spaces to (auto)indent
-set softtabstop=2   " backspace key treat the two spaces like a tab
+"set noexpandtab     " tabs are not converted to spaces
+set tabstop=4       " numbers of spaces of tab character
+set shiftwidth=4    " numbers of spaces to (auto)indent
+set softtabstop=4   " backspace key treat the two spaces like a tab
 set scrolloff=3     " keep 3 lines when scrolling
 set showcmd         " display incomplete commands
 set hlsearch        " highlight searches
