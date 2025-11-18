@@ -70,7 +70,7 @@ ZSH_THEME="murtas"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git docker docker-compose macos bundler rake rbenv ruby zsh-nvm)
+plugins=(z git docker docker-compose macos mise bundler rake rbenv ruby)
 
 source $ZSH/oh-my-zsh.sh
 

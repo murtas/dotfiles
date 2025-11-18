@@ -10,7 +10,7 @@ brew 'ruby-build'
 
 brew 'rbenv'
 brew 'pyenv'
-brew 'nvm'
+brew 'mise'
 brew 'rustup'
 
 brew 'tree'
