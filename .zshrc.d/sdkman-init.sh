@@ -1,1 +1,0 @@
-/Users/murtas/.sdkman/bin/sdkman-init.sh

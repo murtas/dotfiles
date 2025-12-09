@@ -1,5 +1,7 @@
 #!/bin/bash -eu
 
+DOTFILES="$HOME/dotfiles"
+
 # Xcode Command Line Tools
 if ! xcode-select -p >/dev/null 2>&1; then
     echo "Installing Xcode Command Line Tools..."
@@ -25,6 +27,7 @@ fi
 # oh-my-zsh (non-interactive install)
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Installing oh-my-zsh (non-interactive)..."
+    export ZSH="$HOME/dotfiles/zsh/.oh-my-zsh"
     RUNZSH=no KEEP_ZSHRC=yes \
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
@@ -32,13 +35,14 @@ else
 fi
 
 # Custom theme 
-cat > ~/.oh-my-zsh/themes/murtas.zsh-theme <<'EOF'
+ mkdir -p "$HOME/.oh-my-zsh/custom/themes"
+cat > $HOME/.oh-my-zsh/custom/themes/murtas.zsh-theme <<'EOF'
 PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b $(git_prompt_info) %# '
 EOF
 
 
 # Brew Bundle
-cd ~/provisioning/macosx
+cd $DOTFILES/provisioning/macosx
 brew bundle
 
 
@@ -47,14 +51,37 @@ if [ -x /opt/homebrew/opt/fzf/install ]; then
     yes | /opt/homebrew/opt/fzf/install --no-bash --no-fish
 fi
 
-mkdir -p ~/.zshrc.d
-if [ -f .fzf.zsh ]; then
-    mv .fzf.zsh ~/.zshrc.d/fzf
-    chmod a+x ~/.zshrc.d/fzf
-fi
-
 
 # Git submodules
-cd ~/
-git submodule init
-git submodule update
+cd "$DOTFILES"
+git submodule update --init --recursive
+
+# GNU Stow installation
+if ! command -v stow >/dev/null 2>&1; then
+    echo "Installing GNU Stow..."
+    brew install stow
+fi
+
+STOW_PACKAGES=(
+    config
+    git
+    tmux
+    zsh
+    other
+)
+
+cd "$DOTFILES"
+rm -i ~/.zshrc
+for pkg in "${STOW_PACKAGES[@]}"; do
+    echo "Stowing $pkg..."
+    stow -v -R -t ~ "$pkg"
+done
+
+# Neovim: stow into ~/.config
+mkdir -p ~/.config
+echo "Stowing nvim..."
+stow -v -R -t ~/.config config
+
+chmod a+x $HOME/.zshrc.d/*
+
+echo "macOS provisioning complete!"
