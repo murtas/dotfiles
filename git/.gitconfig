@@ -1,7 +1,7 @@
 [user]
   email = murtas@gmail.com
   name = Diogo F. Andrade Murteira
-  signingkey = F6D1F7BF02C625BCFCB895CA111BC3B5C216433F
+  signingkey = F5E7F0B60AB1A197
 [core]
   editor = nvim
   pager = delta
