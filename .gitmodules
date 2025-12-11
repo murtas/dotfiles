@@ -1,27 +1,12 @@
-[submodule "nvim/.config/nvim/pack/plugins/start/delimitMate"]
-    path = nvim/.config/nvim/pack/plugins/start/delimitMate
-    url = https://github.com/Raimondi/delimitMate.git
-
-[submodule "nvim/.config/nvim/pack/plugins/opt/nerdtree"]
-    path = nvim/.config/nvim/pack/plugins/opt/nerdtree
-    url = https://github.com/preservim/nerdtree.git
-
-[submodule "nvim/.config/nvim/pack/plugins/opt/ack.vim"]
-    path = nvim/.config/nvim/pack/plugins/opt/ack.vim
-    url = https://github.com/mileszs/ack.vim.git
-
-[submodule "nvim/.config/nvim/pack/plugins/opt/delimitMate"]
-    path = nvim/.config/nvim/pack/plugins/opt/delimitMate
-    url = https://github.com/Raimondi/delimitMate.git
-[submodule "config/nvim/pack/plugins/start/delimitMate"]
-	path = config/nvim/pack/plugins/start/delimitMate
+[submodule "stow/config/nvim/pack/plugins/start/delimitMate"]
+	path = stow/config/nvim/pack/plugins/start/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
-[submodule "config/nvim/pack/plugins/opt/nerdtree"]
-	path = config/nvim/pack/plugins/opt/nerdtree
+[submodule "stow/config/nvim/pack/plugins/opt/nerdtree"]
+	path = stow/config/nvim/pack/plugins/opt/nerdtree
 	url = https://github.com/preservim/nerdtree.git
-[submodule "config/nvim/pack/plugins/opt/ack.vim"]
-	path = config/nvim/pack/plugins/opt/ack.vim
+[submodule "stow/config/nvim/pack/plugins/opt/ack.vim"]
+	path = stow/config/nvim/pack/plugins/opt/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "config/nvim/pack/plugins/opt/delimitMate"]
-	path = config/nvim/pack/plugins/opt/delimitMate
+[submodule "stow/config/nvim/pack/plugins/opt/delimitMate"]
+	path = stow/config/nvim/pack/plugins/opt/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git

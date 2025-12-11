@@ -71,7 +71,7 @@ STOW_PACKAGES=(
     other
 )
 
-cd "$DOTFILES"
+cd "$DOTFILES/stow"
 rm -i ~/.zshrc
 for pkg in "${STOW_PACKAGES[@]}"; do
     echo "Stowing $pkg..."
