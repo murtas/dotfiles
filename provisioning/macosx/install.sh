@@ -35,7 +35,7 @@ else
 fi
 
 # Custom theme 
- mkdir -p "$HOME/.oh-my-zsh/custom/themes"
+mkdir -p "$HOME/.oh-my-zsh/custom/themes"
 cat > $HOME/.oh-my-zsh/custom/themes/murtas.zsh-theme <<'EOF'
 PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b $(git_prompt_info) %# '
 EOF
@@ -65,6 +65,7 @@ fi
 STOW_PACKAGES=(
     config
     git
+    gnupg
     tmux
     zsh
     other
