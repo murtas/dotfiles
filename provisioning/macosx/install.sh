@@ -45,12 +45,10 @@ EOF
 cd $DOTFILES/provisioning/macosx
 brew bundle
 
-
 # fzf post-install
 if [ -x /opt/homebrew/opt/fzf/install ]; then
     yes | /opt/homebrew/opt/fzf/install --no-bash --no-fish
 fi
-
 
 # Git submodules
 cd "$DOTFILES"
@@ -62,26 +60,8 @@ if ! command -v stow >/dev/null 2>&1; then
     brew install stow
 fi
 
-STOW_PACKAGES=(
-    config
-    git
-    gnupg
-    tmux
-    zsh
-    other
-)
 
-cd "$DOTFILES/stow"
-rm -i ~/.zshrc
-for pkg in "${STOW_PACKAGES[@]}"; do
-    echo "Stowing $pkg..."
-    stow -v -R -t ~ "$pkg"
-done
-
-# Neovim: stow into ~/.config
-mkdir -p ~/.config
-echo "Stowing nvim..."
-stow -v -R -t ~/.config config
+"$DOTFILES/provisioning/stow/stow_all.sh"
 
 chmod a+x $HOME/.zshrc.d/*
 
