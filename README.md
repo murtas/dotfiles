@@ -1,9 +1,7 @@
 # 💻 Provisioning
 
-## Mac
-
 ```bash
-./provisioning/macosx/install.sh
+./provisioning/provision.sh
 ```
 
 ### 🛡️ GPG / SSH Keys

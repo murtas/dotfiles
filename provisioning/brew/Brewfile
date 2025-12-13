@@ -5,6 +5,7 @@ brew 'neovim'
 brew 'ack'
 brew 'git'
 brew 'git-delta'
+brew 'stow'
 
 brew 'ruby-build'
 
