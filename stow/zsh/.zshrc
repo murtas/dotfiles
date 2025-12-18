@@ -1,12 +1,14 @@
+# Precedence over p10k instant prompt needed
+# p10k instant prompt redirects stdin, impacting the outcome of tty command:
+# $ tty: 'not a tty'
+export GPG_TTY=$(tty)
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -16,6 +18,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -109,15 +112,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Enable recursive search
-bindkey -v
-bindkey '^R' history-incremental-search-backward
-
-# VI mode
-set -o vi
-
-export GPG_TTY=$(tty)
-
 function source_scripts() {
   for i
   do
@@ -128,6 +122,13 @@ function source_scripts() {
   done
 }
 
-source_scripts ~/.zshrc.d/{secrets,locale,fzf,aliases,pyenv,work}
+source_scripts ~/.zshrc.d/{secrets,locale,fzf,aliases,work}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# VI mode
+# set -o vi
+bindkey -v
+
+# Enable recursive search
+bindkey '^R' history-incremental-search-backward
