@@ -1,3 +1,6 @@
+# ProfileGG
+#zmodload zsh/zprof
+
 # Precedence over p10k instant prompt needed
 # p10k instant prompt redirects stdin, impacting the outcome of tty command:
 # $ tty: 'not a tty'
@@ -18,9 +21,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -82,35 +82,24 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git docker docker-compose macos mise bundler rake rbenv ruby)
+plugins=(
+  z
+  copybuffer
+  git
+  docker
+  docker-compose
+  kubectl
+  macos
+  mise
+  vi-mode
+  zsh-interactive-cd
+  zsh-autosuggestions
+  zsh-syntax-highlighting # must be last
+)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 function source_scripts() {
   for i
@@ -124,11 +113,24 @@ function source_scripts() {
 
 source_scripts ~/.zshrc.d/{secrets,locale,fzf,aliases,work}
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # VI mode
 # set -o vi
 bindkey -v
 
-# Enable recursive search
-bindkey '^R' history-incremental-search-backward
+# Compile the files if source changed
+zcompile_if_needed() {
+  local file="$1"
+  if [[ -f "$file" && ( ! -f "${file}.zwc" || "$file" -nt "${file}.zwc" ) ]]; then
+    zcompile "$file"
+  fi
+}
+
+# Run the check for your main files
+zcompile_if_needed ~/.zshrc
+zcompile_if_needed ~/.p10k.zsh
+
+# Profile
+# zprof
