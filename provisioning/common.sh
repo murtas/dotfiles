@@ -13,6 +13,28 @@ else
     echo "oh-my-zsh already installed."
 fi
 
+# Define the custom plugins directory
+CUSTOM_PLUGINS_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"
+
+# List of external plugins to check and clone
+# Format: "folder_name|repository_url"
+external_plugins=(
+  "zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions"
+  "zsh-syntax-highlighting|https://github.com/zsh-users/zsh-syntax-highlighting.git"
+  "zsh-interactive-cd|https://github.com/changyuheng/zsh-interactive-cd.git"
+)
+
+# Loop through and clone if missing
+for plugin in "${external_plugins[@]}"; do
+  name="${plugin%%|*}"
+  url="${plugin#*|}"
+  
+  if [ ! -d "$CUSTOM_PLUGINS_DIR/$name" ]; then
+    echo "Installing plugin: $name..."
+    git clone "$url" "$CUSTOM_PLUGINS_DIR/$name"
+  fi
+done
+
 # Powerlevel10k
 P10K_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 if [ ! -d "$P10K_DIR" ]; then
