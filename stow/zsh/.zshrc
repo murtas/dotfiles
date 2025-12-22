@@ -99,7 +99,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 function source_scripts() {
   for i
