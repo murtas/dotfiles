@@ -1,3 +1,48 @@
 alias ll="ls -la"
 alias vi="nvim"
 alias vim="nvim"
+
+# Browser
+# Detect Operating System
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    CHROME_BIN="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    FIREFOX_BIN="/Applications/Firefox.app/Contents/MacOS/firefox"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    CHROME_BIN="google-chrome"
+    FIREFOX_BIN="firefox"
+fi
+
+# Universal Aliases
+alias chrome-tmp='"$CHROME_BIN" --user-data-dir=$(mktemp -d) --no-first-run --no-default-browser-check'
+alias chrome-wireshark='SSLKEYLOGFILE=/tmp/ssl.log chrome-tmp'
+alias firefox-tmp='$FIREFOX_BIN -no-remote -profile $(mktemp -p /tmp -d)'
+alias firefox-wireshark='SSLKEYLOGFILE=/tmp/ssl.log firefox-tmp'
+
+# Functions
+
+# Returns all binaries from PATH in resolution order
+# whereis is legacy tool and won't search in PATH
+whichbins() {
+    type -a $1
+}
+
+cftunnel() {
+  # Custom config can be used with --config <filename>
+  # YAML
+  # tunnel: <TUNNEL_ID_OR_NAME>
+  # credentials-file: /path/to/json
+  # ingress:
+  #   # Map subdomain A to port 3000
+  #   - hostname: site1.yourdomain.com
+  #     service: http://localhost:3000
+  #   # Map subdomain B to port 4000
+  #   - hostname: site2.yourdomain.com
+  #     service: http://localhost:4000
+  #   # Map a different local IP entirely
+  #   - hostname: other-device.yourdomain.com
+  #     service: http://192.168.1.50:80
+  #   # Catch-all rule (REQUIRED: must be at the end)
+  #   - service: http_status:404
+  #
+  cloudflared tunnel --url ${1::=http://127.0.0.1:8000}
+}
