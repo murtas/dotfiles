@@ -1,17 +1,14 @@
 # ProfileGG
 #zmodload zsh/zprof
 
-# Precedence over p10k instant prompt needed
-# p10k instant prompt redirects stdin, impacting the outcome of tty command:
-# $ tty: 'not a tty'
-export GPG_TTY=$(tty)
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+export GPG_TTY=$TTY
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -21,6 +18,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -99,19 +98,23 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-source <(fzf --zsh)
 
 function source_scripts() {
   for i
   do
-    # skip non-executable snippets
-    [ -x "$i" ] || continue
+    # 1. Skip if it's a directory
+    # 2. Skip if it ends in .zwc
+    # 3. Skip if the file isn't readable
+    [[ -d "$i" || "$i" == *.zwc || ! -r "$i" ]] && continue
     # execute $script in the context of the current shell
     source $i
   done
 }
 
 source_scripts ~/.zshrc.d/{secrets,locale,fzf,aliases,work}
+
+# Initialize fzf
+source <(fzf --zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -131,6 +134,13 @@ zcompile_if_needed() {
 # Run the check for your main files
 zcompile_if_needed ~/.zshrc
 zcompile_if_needed ~/.p10k.zsh
+
+# Compile your custom scripts
+for script in ~/.zshrc.d/*; do
+  # Skip if the filename ends in .zwc
+  [[ "$snippet" == *.zwc ]] && continue
+  zcompile_if_needed "$script"
+done
 
 # Profile
 # zprof

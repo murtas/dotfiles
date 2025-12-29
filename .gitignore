@@ -1,5 +1,6 @@
 # Zsh
 stow/zsh/.oh-my-zsh
+**\.zwc
 
 # Neovim plugins
 stow/config/nvim/pack/
