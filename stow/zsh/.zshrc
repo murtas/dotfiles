@@ -138,7 +138,7 @@ zcompile_if_needed ~/.p10k.zsh
 # Compile your custom scripts
 for script in ~/.zshrc.d/*; do
   # Skip if the filename ends in .zwc
-  [[ "$snippet" == *.zwc ]] && continue
+  [[ "$script" == *.zwc ]] && continue
   zcompile_if_needed "$script"
 done
 
