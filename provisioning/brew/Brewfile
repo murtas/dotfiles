@@ -27,7 +27,7 @@ brew 'tcptraceroute'
 cask 'caffeine'
 cask 'clipbook'
 cask 'meetingbar'
-cask 'menumeters'
+cask 'stats'
 cask 'rectangle'
 cask 'shottr'
 
