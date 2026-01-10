@@ -6,7 +6,7 @@ DOTFILES="$HOME/dotfiles"
 # oh-my-zsh (non-interactive)
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Installing oh-my-zsh (non-interactive)..."
-    export ZSH="$HOME/dotfiles/zsh/.oh-my-zsh"
+    export ZSH="$HOME/zsh/.oh-my-zsh"
     RUNZSH=no KEEP_ZSHRC=yes \
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
