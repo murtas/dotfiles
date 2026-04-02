@@ -36,6 +36,38 @@ hi LineNr term=bold ctermfg=DarkGrey
 
 filetype plugin indent on
 
+" ================================
+" FZF Integration
+" ================================
+" Cross-platform fzf setup
+if executable('fzf')
+    " Common installation paths
+    let s:fzf_paths = [
+        \ $HOME . '/.fzf',
+        \ '/usr/local/opt/fzf',
+        \ '/opt/homebrew/opt/fzf',
+        \ '/usr/share/vim/vimfiles',
+        \ '/usr/share/fzf',
+        \ '/usr/share/doc/fzf/examples',
+    \ ]
+
+    " Also check if fzf was installed via package manager
+    if executable('brew')
+        let s:brew_path = trim(system('brew --prefix fzf 2>/dev/null'))
+        if v:shell_error == 0 && isdirectory(s:brew_path)
+            call add(s:fzf_paths, s:brew_path)
+        endif
+    endif
+
+    " Find and add the first valid fzf path
+    for path in s:fzf_paths
+        if isdirectory(path) && (filereadable(path . '/plugin/fzf.vim') || isdirectory(path . '/plugin'))
+            execute 'set rtp+=' . path
+            break
+        endif
+    endfor
+endif
+
 
 " Function to load NERDTree only if needed, then toggle it.
 function! ToggleNERDTree()
@@ -63,6 +95,15 @@ nnoremap <Up> <NOP>
 nnoremap <Down> <NOP>
 nnoremap <Left> <NOP>
 nnoremap <Right> <NOP>
+
+" FZF keybindings
+nnoremap <C-p> :FZF<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>g :GFiles<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>r :Rg<CR>
+nnoremap <leader>l :Lines<CR>
+nnoremap <leader>h :History<CR>
 
 " ================================
 " Autocommands
